@@ -1,5 +1,7 @@
 ## Put comments here that give an overall description of what your
 ## functions do
+# below functions initiate a special matrix that has the "methods" to store (set)
+# and retrieve (get) the matrix itself as well as its inverse.
 
 ## Write a short comment describing this function
 # this is the constructor function that creates a list of functions
@@ -11,6 +13,7 @@ makeCacheMatrix <- function(x = matrix())
     set <- function(y)
     {
       if (!is.matrix(y) | nrow(y) != ncol(y)) return(errorCondition("input is not a matrix or a non-square matrix"))
+      if (identical(y,x)) return(message("set matrix is identical to the stored matrix"))
       x <<- y
       matrixna <- matrix(NA)
       inv <<- matrixna
@@ -27,6 +30,9 @@ makeCacheMatrix <- function(x = matrix())
 
 
 ## Write a short comment describing this function
+# below function primarily calculates and stores or retrieves - if the matrix
+# was not changed - the inverse matrix of the matrix that is retrieved
+# by the member function !!get!! of the above function
 
 cacheSolve <- function(x, ...) 
 {
